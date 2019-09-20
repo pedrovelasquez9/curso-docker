@@ -1,1 +1,3 @@
-https://docs.google.com/forms/d/1qN7Au8KnERhKQmwxIwe_14U0pqniBVUl-v3ay7c-JVM/edit
+Cuestionario 1: https://docs.google.com/forms/d/1qN7Au8KnERhKQmwxIwe_14U0pqniBVUl-v3ay7c-JVM/edit
+Cuestionario 2: https://docs.google.com/forms/d/1pJJYSosxSH8JJwgwDdE5f9Rvq497o5Sl3B8SGMWmiyQ/edit
+Tips para construir imágenes de Docker: https://github.com/mxabierto/hackea-el-sistema/wiki/%C2%BFC%C3%B3mo-escribir-un-buen-Dockerfile%3F
