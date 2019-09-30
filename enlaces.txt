@@ -1,6 +1,7 @@
 Cuestionario 1: https://docs.google.com/forms/d/1qN7Au8KnERhKQmwxIwe_14U0pqniBVUl-v3ay7c-JVM/edit
 Cuestionario 2: https://docs.google.com/forms/d/1pJJYSosxSH8JJwgwDdE5f9Rvq497o5Sl3B8SGMWmiyQ/edit
 Cuestionario 3: https://docs.google.com/forms/d/1cFNIpEwkD3g6LCQWQU1YQKIShcLtT6bcgOOhFI8zAJM/edit
+Cuestionario 4: https://docs.google.com/forms/d/1HS0vpZy7LvGvXru237BOlDTOQ5fyefztTDelSwsjfh4/edit
 Tips para construir imágenes de Docker: https://github.com/mxabierto/hackea-el-sistema/wiki/%C2%BFC%C3%B3mo-escribir-un-buen-Dockerfile%3F
 Versiones del engine vs compatibilidad con yml: https://docs.docker.com/compose/compose-file/compose-versioning/
 Mount USB en MACOS: https://docs.cancergenomicscloud.org/docs/mount-a-usb-drive-in-a-docker-container
