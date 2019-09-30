@@ -1,0 +1,57 @@
+version: "3.4"
+services:
+  mongo:
+    image: mongo:rc-bionic
+    restart: always
+    networks:
+      - mired
+    ports:
+      - "20971:27017"
+    expose:
+      - "27017"
+    container_name: mongo
+    hostname: mongo
+  backend:
+    build:
+      context: "./server/"
+      dockerfile: "./docker/Dockerfile"
+    restart: always
+    ports:
+      - "3000:3000"
+    expose:
+      - "3000"
+    depends_on:
+      - mongo
+    networks:
+      - mired
+    container_name: backend
+  #wordpress
+  mysql:
+    image: mysql:5.7
+    restart: always
+    volumes:
+      - "${LOCAL_URL}:/var/lib/mysql"
+    ports:
+      - "33006:3306"
+    expose:
+      - "3306"
+
+  wordpress:
+    depends_on:
+      - mysql
+    image: wordpress:latest
+    restart: always
+    links:
+      - mysql
+    ports:
+      - "81:80"
+    environment:
+      WORDPRESS_DB_HOST: mysql:3306
+    networks:
+      - mired
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports:
+      - "8082:80"
