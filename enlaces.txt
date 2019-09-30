@@ -6,3 +6,4 @@ Tips para construir imágenes de Docker: https://github.com/mxabierto/hackea-el-
 Versiones del engine vs compatibilidad con yml: https://docs.docker.com/compose/compose-file/compose-versioning/
 Mount USB en MACOS: https://docs.cancergenomicscloud.org/docs/mount-a-usb-drive-in-a-docker-container
 Mysql connection: https://medium.com/@hkdb/wordpress-cant-connect-to-the-latest-mysql-8-x-server-33c4c43b05b7
+Docker machine en windows y macos: https://docs.docker.com/machine/get-started/
