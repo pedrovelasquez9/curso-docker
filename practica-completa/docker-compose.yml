@@ -1,0 +1,26 @@
+version: "2.1"
+services:
+  mongo:
+    image: "bitnami/mongodb:latest"
+    ports:
+      - "${HOST_PORT_DB}:27017"
+    environment:
+      MONGODB_USERNAME: ${MONGODB_USER}
+      MONGODB_PASSWORD: ${MONGODB_PASSWORD}
+      MONGODB_DATABASE: ${MONGODB_DATABASE}
+      MONGODB_ROOT_PASSWORD: ${MONGODB_ROOT_PASSWORD}
+
+  backend:
+    build:
+      context: "./"
+      dockerfile: "./Dockerfile"
+    ports:
+      - "${HOST_PORT_APP}:3000"
+    links:
+      - mongo
+    depends_on:
+      - mongo
+    environment:
+      WAIT_HOSTS: mongo:27017
+      WAIT_BEFORE_HOSTS: 30
+      WAIT_AFTER_HOSTS: 30
