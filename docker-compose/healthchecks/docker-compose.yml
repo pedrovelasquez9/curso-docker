@@ -1,0 +1,12 @@
+version: "3.7"
+services:
+  alpine:
+    image: alpine:3.8
+    command: sleep 600
+    restart: always
+    healthcheck:
+      test: exit 1
+      interval: 1s
+      timeout: 1s
+      retries: 3
+      start_period: 0s

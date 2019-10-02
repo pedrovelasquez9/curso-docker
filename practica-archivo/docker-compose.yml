@@ -1,0 +1,78 @@
+version: "3.4"
+services:
+  mongo:
+    image: mongo:rc-bionic
+    restart: always
+    networks:
+      - mired
+    ports:
+      - "20971:27017"
+    expose:
+      - "27017"
+    container_name: mongo
+    hostname: mongo
+  backend:
+    build:
+      context: "./api/"
+      dockerfile: "./docker/Dockerfile"
+    restart: always
+    ports:
+      - "3001:8888"
+    expose:
+      - "8888"
+    depends_on:
+      - mongo
+    networks:
+      - mired
+    container_name: backend
+  #wordpress
+  mysql:
+    image: mysql:5.7
+    restart: always
+    ports:
+      - "33007:3306"
+    expose:
+      - "3306"
+    volumes:
+      - /home/pedro/dbdata/db:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    networks:
+      - mired
+
+  wordpress:
+    depends_on:
+      - mysql
+    image: wordpress:latest
+    restart: always
+    links:
+      - mysql
+    ports:
+      - "84:80"
+    environment:
+      WORDPRESS_DB_HOST: mysql:3306
+      WORDPRESS_DB_USER: ${MYSQL_USER}
+      WORDPRESS_DB_PASSWORD: ${MYSQL_PASSWORD}
+    networks:
+      - mired
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    depends_on:
+      - mysql
+    links:
+      - mysql
+    ports:
+      - "8083:80"
+    networks:
+      - mired
+    environment:
+      PMA_HOST: mysql
+
+networks:
+  mired:
+    driver: bridge

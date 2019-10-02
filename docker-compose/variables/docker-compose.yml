@@ -1,0 +1,21 @@
+version: "3"
+services:
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: prueba
+      MYSQL_USER: pedro
+      MYSQL_PASSWORD: password
+    ports:
+      - ${DB_PORT}:3306
+    networks:
+      - mi-red
+    volumes:
+      - dbdata:/var/lib/mysql
+networks:
+  mi-red:
+    driver: bridge
+volumes:
+  dbdata:
+    driver: local

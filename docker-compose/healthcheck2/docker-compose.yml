@@ -1,0 +1,14 @@
+version: "2.1"
+services:
+  postgres-db:
+    image: postgres
+    healthcheck:
+      test: ["CMD", "pg_isready", "-q", "-d", "${DB_NAME}", "-U", "${DB_USER}"]
+      timeout: 45s
+      interval: 30s
+      retries: 10
+  app:
+    image: node
+    depends_on:
+      postgres-db:
+        condition: service_healthy

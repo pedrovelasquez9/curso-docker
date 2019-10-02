@@ -1,0 +1,20 @@
+version: "3.1"
+
+services:
+  ghost:
+    image: ghost:2.31.1
+    restart: always
+    ports:
+      - 8088:2368
+    environment:
+      database__client: mysql
+      database__connection__host: db
+      database__connection__user: root
+      database__connection__password: secret
+      database__connection__database: ghost
+
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
