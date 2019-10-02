@@ -7,3 +7,5 @@ Versiones del engine vs compatibilidad con yml: https://docs.docker.com/compose/
 Mount USB en MACOS: https://docs.cancergenomicscloud.org/docs/mount-a-usb-drive-in-a-docker-container
 Mysql connection: https://medium.com/@hkdb/wordpress-cant-connect-to-the-latest-mysql-8-x-server-33c4c43b05b7
 Docker machine en windows y macos: https://docs.docker.com/machine/get-started/
+wait script: https://github.com/ufoscout/docker-compose-wait
+vagrant script: https://github.com/pedrovelasquez9/vagrant-docker
