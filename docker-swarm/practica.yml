@@ -1,0 +1,48 @@
+version: "3.4"
+services:
+  mongo:
+    image: mongo:rc-bionic
+    restart: always
+    ports:
+      - "20971:27017"
+    expose:
+      - "27017"
+    container_name: mongo
+    hostname: mongo
+  #wordpress
+  mysql:
+    image: mysql:5.7
+    restart: always
+    ports:
+      - "33007:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: secret
+
+  wordpress:
+    depends_on:
+      - mysql
+    image: wordpress:latest
+    restart: always
+    links:
+      - mysql
+    ports:
+      - "84:80"
+    environment:
+      WORDPRESS_DB_HOST: mysql:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: secret
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    depends_on:
+      - mysql
+    links:
+      - mysql
+    ports:
+      - "8083:80"
+    environment:
+      PMA_HOST: mysql
+
